@@ -1,14 +1,19 @@
-resource "azurerm_resource_group" "gp" {
-  name     = "gp1"
-  location = "West Europe"
+resource "azurerm_resource_group" "rg0" {
+    name = "rg_1"
+    location = "west us"
+  
 }
 
-resource "azurerm_resource_group" "gp1" {
-  name     = "gp2"
-  location = "West Europe"
+resource "azurerm_resource_group" "rg1" {
+    name = "rg_2"
+    location = "east us"
+
+ 
 }
 
-resource "azurerm_resource_group" "gp2" {
-  name     = "gp3"
-  location = "West Europe"
+resource "azurerm_resource_group" "rg2" {
+    name = "rg_3"
+    location = "east us"
+
+ 
 }
