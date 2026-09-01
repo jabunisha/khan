@@ -7,24 +7,24 @@ on:
 jobs:
   Terraform:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-       -uses: hashicorps/steps-terraform@v4
-    with:
+    - uses: hashicorps/steps-terraform@v4
+      with:
        terraform_vesion: "1.14.6" 
 
 
 
-     -uses: azure/login@v3
-  with:
-    creds:
-       {
-    "clientSecret":  ,
-    "subscriptionId": ,
-    "tenantId":  ,
-    "clientId":  
-}      
+    - uses: azure/login@v3
+      with:
+         creds: |
+           {
+      "clientSecret": "hBN8Q~_G48p~xYF9rsJlfqR_hnFoMnOKu9iRPdhB"  ,
+      "subscriptionId": "370b2d3a-e01b-4f6f-8d7c-760f75894068", 
+      "tenantId": "e8d592ab-f2df-4543-882e-e0e0db835e04"  ,
+      "clientId": "85038f20-d8fa-4241-a268-3fb6b96a14db"
+}
 
     
