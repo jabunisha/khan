@@ -1,27 +1,32 @@
-name: CI
+name: Terraform
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+
 jobs:
-  Terraform:
-  build:
-    runs-on: self-hosted
+  terraform:
+    runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - uses: hashicorps/steps-terraform@v4
-      with:
-       terraform_vesion: "1.14.6" 
-    - uses: azure/login@v3
-      with:
+      - uses: azure/login@v3
+        with:
          creds: |
-           {
-      "clientSecret": "hBN8Q~_G48p~xYF9rsJlfqR_hnFoMnOKu9iRPdhB"
-      "subscriptionId": "370b2d3a-e01b-4f6f-8d7c-760f75894068"
-      "tenantId": "e8d592ab-f2df-4543-882e-e0e0db835e04"
-      "clientId": "85038f20-d8fa-4241-a268-3fb6b96a14db"
-      }
+          {
+          "clientId": "hBN8Q~_G48p~xYF9rsJlfqR_hnFoMnOKu9iRPdhB",
+          "clientSecret": "370b2d3a-e01b-4f6f-8d7c-760f75894068",
+          "subscriptionId": "e8d592ab-f2df-4543-882e-e0e0db835e04",
+          "tenantId": "85038f20-d8fa-4241-a268-3fb6b96a14db"
+          }
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
-    
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
