@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+permissions:
+  id-token: write
+  contents: read
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -15,13 +17,10 @@ jobs:
 
       - uses: azure/login@v3
         with:
-         creds: |
-          {
-          "clientId": "hBN8Q~_G48p~xYF9rsJlfqR_hnFoMnOKu9iRPdhB",
-          "clientSecret": "370b2d3a-e01b-4f6f-8d7c-760f75894068",
-          "subscriptionId": "e8d592ab-f2df-4543-882e-e0e0db835e04",
-          "tenantId": "85038f20-d8fa-4241-a268-3fb6b96a14db"
-          }
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
