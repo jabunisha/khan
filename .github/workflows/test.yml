@@ -3,17 +3,16 @@ name: mehnat
 on:
   push:
     branches:
-      - main
+    - main
 workflow_dispatch:
+
 permissions:
   id-token: write
   contents: read
 
-
 jobs:
-aaj ke din mene bahut ment ki code me bahut error aaye:
- runs-on: ubuntu-latest
- 
+   aaj ke din mene bahut ment ki code me bahut error aaye:
+     runs-on: ubuntu-latest
 steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,7 +20,7 @@ steps:
       - name: azure login
       - uses: azure/login@v3
         with:
-         client-id: ${{ secrets.AZURE_CLIENT_ID }}
+         client-id: ${{ secrets.AZURE_CLIENT_ID }
          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
          
